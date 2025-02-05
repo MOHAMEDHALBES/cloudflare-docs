@@ -28,13 +28,6 @@ Follow these steps to create and deploy your own MCP server on Cloudflare Worker
 
 ### 1. Create a new Worker 
 
-If you haven't already, install [Wrangler](https://developers.cloudflare.com/workers/wrangler/) and log in:
-
-```bash
-npm install wrangler
-wrangler login
-```
-
 Initialize a new project:
 ```bash
 npx create-cloudflare@latest my-mcp-worker
@@ -99,9 +92,9 @@ This converts your Cloudflare Worker into an MCP server, enabling interactions w
 
 
 ### 5. Deploy the MCP Server
-Update your wrangler.toml with the appropriate configuration then deploy your Worker:
+Update your wrangler.toml with the appropriate configuration, then then deploy your Worker:
 ```bash
-wrangler deploy
+npx wrangler deploy
 ```
 
 Your MCP server is now deployed globally and all your public class methods are exposed as MCP tools that AI assistants can now interact with. 
