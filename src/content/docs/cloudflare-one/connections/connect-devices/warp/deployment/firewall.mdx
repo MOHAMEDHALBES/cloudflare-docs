@@ -75,6 +75,8 @@ As part of establishing the WARP connection, the client will check the following
 
 - `connectivity.cloudflareclient.com` verifies connectivity inside of the WARP tunnel. Because this check happens inside of the tunnel, you do not need to add `connectivity.cloudflareclient.com` to your firewall allowlist.
 
+- `connectivity.cloudflareclient.com` currently resolves to `162.159.138.65` and `162.159.137.65`. However, the WARP client does not use DNS resolution for its tunnel connectivity checks and therefore, these IP addresses do not need to be added to any firewall rules.
+
 ## NEL reporting (optional)
 
 The WARP client reports connectivity issues to our NEL endpoint via `a.nel.cloudflare.com`. This is not technically required to operate but will result in errors in our logs if not excluded properly.
