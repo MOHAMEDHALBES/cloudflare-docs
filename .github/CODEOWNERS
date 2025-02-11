@@ -22,9 +22,6 @@
 /src/content/docs/workers-ai/ @rita3ko @craigsdennis @markdembo @mchenco @daisyfaithauma @cloudflare/pcx-technical-writing
 /src/content/docs/vectorize/ @elithrar @vy-ton @sejoker @mchenco @cloudflare/pcx-technical-writing
 /src/content/partials/vectorize/ @elithrar @mchenco @sejoker @cloudflare/pcx-technical-writing
-workers-ai.yaml @kathayl @G4brym @mchenco @daisyfaithauma @cloudflare/pcx-technical-writing
-ai-gateway.yaml @kathayl @G4brym @mchenco @daisyfaithauma @cloudflare/pcx-technical-writing
-vectorize.yaml @elithrar @mchenco @sejoker @cloudflare/pcx-technical-writing
 
 # Analytics & Logs
 
@@ -62,8 +59,6 @@ vectorize.yaml @elithrar @mchenco @sejoker @cloudflare/pcx-technical-writing
 /src/content/docs/cloudflare-one/policies/data-loss-prevention/ @maxvp @cloudflare/pcx-technical-writing
 /src/content/docs/cloudflare-one/insights/dex/ @deadlypants1973 @cloudflare/pcx-technical-writing
 /src/content/docs/email-security/ @Maddy-Cloudflare @cloudflare/pcx-technical-writing
-access.yaml @ranbel @kennyj42 @cloudflare/pcx-technical-writing
-warp.yaml @kokolocomotion1 @ranbel @cloudflare/pcx-technical-writing
 
 # Consumer products
 
@@ -92,42 +87,30 @@ warp.yaml @kokolocomotion1 @ranbel @cloudflare/pcx-technical-writing
 /src/assets/images/calls/ @cloudflare/pcx-technical-writing @cloudflare/calls
 /public/calls/ @cloudflare/pcx-technical-writing @cloudflare/calls
 /src/content/docs/d1/ @elithrar @rozenmd @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
-d1.yaml @elithrar @rozenmd @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
 /src/content/partials/d1/ @elithrar @rozenmd @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
 /src/content/docs/durable-objects/ @elithrar @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
-durable-objects.yaml @elithrar @rozenmd @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
 /src/content/docs/email-routing/ @cloudflare/pcx-technical-writing
 /src/content/docs/hyperdrive/ @elithrar @thomasgauvin @sejoker @oxyjun @cloudflare/pcx-technical-writing
-hyperdrive.yaml @elithrar @thomasgauvin @sejoker @oxyjun @cloudflare/pcx-technical-writing
 /src/content/partials/hyperdrive/ @elithrar @thomasgauvin @sejoker @oxyjun @cloudflare/pcx-technical-writing
-durable-objects.yaml @elithrar @vy-ton @joshthoward @oxyjun @cloudflare/pcx-technical-writing
 /src/content/docs/images/ @dcpena @cloudflare/pcx-technical-writing @renandincer @third774
 /src/content/docs/pages/ @cloudflare/workers-docs @GregBrimble @WalshyDev @aninibread @irvinebroque @cloudflare/pcx-technical-writing @ToriLindsay
 /src/assets/images/pages/ @cloudflare/workers-docs @GregBrimble @WalshyDev @aninibread @cloudflare/pcx-technical-writing @ToriLindsay
-pages.yaml @cloudflare/workers-docs @GregBrimble @WalshyDev @aninibread @cloudflare/pcx-technical-writing
 /src/content/docs/kv/ @elithrar @thomasgauvin @rts-rob @oxyjun @cloudflare/pcx-technical-writing
-kv.yaml @elithrar @thomasgauvin @rts-rob @oxyjun @cloudflare/pcx-technical-writing
 /src/content/partials/kv/ @elithrar @thomasgauvin @rts-rob @oxyjun @cloudflare/pcx-technical-writing
 /src/content/docs/pub-sub/ @elithrar @dcpena @cloudflare/pcx-technical-writing
 /src/content/docs/queues/ @elithrar @toddmantell @maheshwarip @cloudflare/pcx-technical-writing
-queues.yaml @elithrar @toddmantell @maheshwarip @cloudflare/pcx-technical-writing
 /src/content/docs/r2/ @oxyjun @elithrar @jonesphillip @cloudflare/workers-docs @cloudflare/pcx-technical-writing
-r2.yaml @oxyjun @elithrar @cloudflare/workers-docs @cloudflare/pcx-technical-writing
 /src/content/docs/stream/ @tsmith512 @dcpena @cloudflare/pcx-technical-writing @renandincer @third774
-stream.yaml @tsmith512 @dcpena @cloudflare/pcx-technical-writing
 /src/content/docs/workers/ @cloudflare/workers-docs @GregBrimble @irvinebroque @mikenomitch @WalshyDev @cloudflare/deploy-config @cloudflare/pcx-technical-writing @ToriLindsay
 /src/content/partials/workers/ @cloudflare/workers-docs @GregBrimble @irvinebroque @mikenomitch @WalshyDev @cloudflare/deploy-config @cloudflare/pcx-technical-writing @ToriLindsay
 /src/assets/images/workers/ @cloudflare/workers-docs @GregBrimble @irvinebroque @WalshyDev @cloudflare/deploy-config @cloudflare/pcx-technical-writing @ToriLindsay
-workers.yaml @cloudflare/workers-docs @GregBrimble @WalshyDev @aninibread @cloudflare/deploy-config @cloudflare/pcx-technical-writing @irvinebroque @mikenomitch
 /src/content/docs/zaraz/ @bjesus @jonnyparris @simonabadoiu @cloudflare/pcx-technical-writing
-zaraz.yaml @bjesus @jonnyparris @simonabadoiu @cloudflare/pcx-technical-writing
 /src/content/docs/workers/ci-cd/ @irvinebroque @aninibread @GregBrimble @ToriLindsay @cloudflare/pcx-technical-writing
 /src/content/docs/workers/runtime-apis/ @irvinebroque @jasnell @mikenomitch @GregBrimble @ToriLindsay @cloudflare/pcx-technical-writing
 /src/content/docs/workers/runtime-apis/bindings/ @irvinebroque @mikenomitch @GregBrimble @ToriLindsay @cloudflare/pcx-technical-writing
 /src/content/docs/workers/platform/ @irvinebroque @GregBrimble @cloudflare/deploy-config @cloudflare/pcx-technical-writing
 /src/content/docs/workers/configuration/compatibility-dates.mdx @irvinebroque @mikenomitch @GregBrimble @ToriLindsay @cloudflare/deploy-config @cloudflare/pcx-technical-writing
 /src/content/docs/workers/configuration/compatibility-flags.mdx @irvinebroque @mikenomitch @GregBrimble @ToriLindsay @cloudflare/deploy-config @cloudflare/pcx-technical-writing
-
 /src/content/docs/workers/reference/migrate-to-module-workers.mdx @irvinebroque @GregBrimble @ToriLindsay @cloudflare/deploy-config @cloudflare/pcx-technical-writing
 /src/content/docs/workers/reference/security-model.mdx @irvinebroque @GregBrimble @ToriLindsay @cloudflare/pcx-technical-writing
 /src/content/compatibility-flags/ @irvinebroque @mikenomitch @GregBrimble @cloudflare/pcx-technical-writing
@@ -144,8 +127,6 @@ zaraz.yaml @bjesus @jonnyparris @simonabadoiu @cloudflare/pcx-technical-writing
 
 /src/content/docs/ddos-protection/ @patriciasantaana @cloudflare/pcx-technical-writing
 /src/content/docs/ddos-protection/change-log/ @antoinecordelle @patriciasantaana @cloudflare/pcx-technical-writing
-ddos-http.yaml @antoinecordelle @patriciasantaana @cloudflare/pcx-technical-writing
-ddos-network.yaml @antoinecordelle @patriciasantaana @cloudflare/pcx-technical-writing
 
 # Docs team areas
 
@@ -184,7 +165,6 @@ ddos-network.yaml @antoinecordelle @patriciasantaana @cloudflare/pcx-technical-w
 # Radar
 
 /src/content/docs/radar/ @meddulla @G4brym @tiagoad @andre-j3sus @cloudflare/pcx-technical-writing
-radar.yaml @meddulla @G4brym @tiagoad @andre-j3sus @cloudflare/pcx-technical-writing
 
 # Reference architecture
 
@@ -202,7 +182,6 @@ radar.yaml @meddulla @G4brym @tiagoad @andre-j3sus @cloudflare/pcx-technical-wri
 /src/content/docs/ssl/ @RebeccaTamachiro @cloudflare/pcx-technical-writing
 /src/content/docs/waf/ @pedrosousa @cloudflare/firewall @cloudflare/pcx-technical-writing
 /src/content/docs/waf/change-log/ @pedrosousa @cloudflare/firewall @vs-mg @cloudflare/pcx-technical-writing
-waf.yaml @pedrosousa @cloudflare/firewall @vs-mg @cloudflare/pcx-technical-writing
 
 # Support
 
@@ -216,7 +195,6 @@ waf.yaml @pedrosousa @cloudflare/firewall @vs-mg @cloudflare/pcx-technical-writi
 # Waiting Room
 
 /src/content/docs/waiting-room/ @angelampcosta @cloudflare/pcx-technical-writing
-waiting-room.yaml @angelampcosta @cloudflare/pcx-technical-writing
 
 # Web Analytics
 
