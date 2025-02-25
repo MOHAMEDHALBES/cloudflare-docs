@@ -107,11 +107,15 @@ This is the list of models that now support JSON mode:
 - [@cf/meta/llama-3.1-8b-instruct-fast](/workers-ai/models/llama-3.1-8b-instruct-fast/)
 - [@cf/meta/llama-3.1-70b-instruct](/workers-ai/models/llama-3.1-70b-instruct/)
 - [@cf/meta/llama-3.3-70b-instruct-fp8-fast](/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/)
-- [@cf/deepseek-ai/deepseek-r1-distill-qwen-32b](/workers-ai/models/deepseek-r1-distill-qwen-32b/)
 - [@cf/meta/llama-3-8b-instruct](/workers-ai/models/llama-3-8b-instruct/)
 - [@cf/meta/llama-3.1-8b-instruct](/workers-ai/models/llama-3.1-8b-instruct/)
+- [@cf/meta/llama-3.2-11b-vision-instruct](/workers-ai/models/llama-3.2-11b-vision-instruct/)
 - [@hf/nousresearch/hermes-2-pro-mistral-7b](/workers-ai/models/hermes-2-pro-mistral-7b/)
+- [@hf/thebloke/deepseek-coder-6.7b-instruct-awq](/workers-ai/models/deepseek-coder-6.7b-instruct-awq/)
+- [@cf/deepseek-ai/deepseek-r1-distill-qwen-32b](/workers-ai/models/deepseek-r1-distill-qwen-32b/)
 
 We will continue extending this list to keep up with new, and requested models.
 
 Note that Workers AI can't guarantee that the model responds according to the requested JSON Schema. Depending on the complexity of the task and adequacy of the JSON Schema, the model may not be able to satisfy the request in extreme situations. If that's the case, then an error `JSON Mode couldn't be met` is returned and must be handled.
+
+JSON Mode currently doesn't support streaming.
