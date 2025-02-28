@@ -1,57 +1,297 @@
 ---
 type: example
-summary: Access the name from within a Durable Object using `init` RPC call.
+summary: Access the name from within a Durable Object using RpcTarget.
 tags:
   - Durable Objects
 pcx_content_type: example
-title: Reference a Durable Object name within the Durable Object class using `init`
+title: Reference a Durable Object name within the Durable Object class using RpcTarget
 sidebar:
   order: 3
-description: Access the name from within a Durable Object using `init` RPC call.
-
+description: Access the name from within a Durable Object using RpcTarget.
 ---
 
-import { TabItem, Tabs, GlossaryTooltip, WranglerConfig } from "~/components"
+import {
+	TabItem,
+	Tabs,
+	GlossaryTooltip,
+	TypeScriptExample,
+} from "~/components";
 
-Once you create a Durable Object using [`idFromName`](/durable-objects/api/namespace/#idfromname), you cannot access the Durable Object [`name`](/durable-objects/api/id/#name) within the Durable Object class itself.
+Once you create a Durable Object using [`idFromName`](/durable-objects/api/namespace/#idfromname), you cannot access the Durable Object [`name`](/durable-objects/api/id/#name) within the Durable Object class itself. Moreover, if you want to set some metadata for the Durable Object, you can't do it directly in the Durable Object. You will have to pass the metadata to every method you call on the Durable Object. This is not ideal.
 
-If you wish to access the Durable Object `name`, you can pass the string by using an `init` RPC method, and store it in the Durable Object class.
+A solution to this is using an `RpcTarget` class. . You can return an instance of this class from the the Durable Object class and use it to configure the Durable Object metadata.
 
-This example demonstrates how to perform this action.
+Based on your needs, you can either store the metadata in the `RpcTarget` class that will be temporary, or use Durable Object storage to store the metadata and reference it in the `RpcTarget` class.
 
+This example does not persist the Durable Object metadata. It demonstrates how to
+
+1. create an `RpcTarget` class
+2. set the Durable Object metadata (name in this example) in the `RpcTarget` class
+3. pass the metadata (name in this example) to a Durable Object method
+4. cleans up the `RpcTarget` class after use
+
+<TypeScriptExample>
 ```ts
 import { DurableObject, RpcTarget } from 'cloudflare:workers';
 
-export class MyDurableObject extends DurableObject<Env> {
-	doName: string | undefined = undefined;
-	constructor(ctx: DurableObjectState, env: Env) {
-		super(ctx, env);
-	}
+/**
+ * Create an RpcDO class that extends RpcTarget
+ * Use this class to set the Durable Object metadata 
+ * Pass the metadata in the Durable Object methods
+ * @param mainDo - The main Durable Object class
+ * @param doName - The name of the Durable Object
+ */
 
-	async init(doName: string | undefined) {
-		this.doName = doName;
-		// Return an RpcTarget that implements the methods
+export class RpcDO extends RpcTarget {
+		constructor(private mainDo: MyDurableObject, private doName: string) {
+			super();
+		}
 
-		console.log('init', doName);
-		return new (class extends RpcTarget {
-			async sayHello(name: string) {
-				return `Hello, ${name}!`;
-			}
-		})();
-	}
+    /**
+     * Pass the name to the Durable Object method
+     * @param name - The name to pass to the Durable Object method
+     */
+    async passDoName(name: string): Promise<string> {
+
+    	// Call the Durable Object method and pass the name and the Durable Object name
+    	return this.mainDo.getDoName(name, this.doName);
+    }
+
+    /**
+     * Call the Durable Object method without passing the Durable Object name
+     * @param name - The name to pass to the Durable Object method
+     */
+    async noDoName(name: string) {
+    	return this.mainDo.noName(name);
+    }
+
 }
+
+/**
+ * Create a Durable Object class 
+ * You can use the RpcDO class to set the Durable Object metadata
+ */
+
+  export class MyDurableObject extends DurableObject<Env> {
+  		constructor(ctx: DurableObjectState, env: Env) {
+  			super(ctx, env);
+  		}
+
+      /**
+       * Initialize the RpcDO class
+       * You can set the Durable Object metadata here
+       * It reutrns an instance of the RpcDO class
+       * @param doName - The name of the Durable Object
+       */
+      async setMetaData(doName: string) {
+      	return new RpcDO(this, doName);
+      }
+
+      /**
+       * Function that takes the name and the Durable Object name
+       * @param name - The name to pass to the Durable Object method
+       * @param doName - The name of the Durable Object
+       */
+      async getDoName(name: string, doName: string): Promise<string> {
+      	console.log({
+      		name: name,
+      		durableObjectName: doName
+      	})
+      	return `Hello, ${name}! The name of this DO is ${doName}`;
+      }
+
+      /**
+       * Function that is not in the RpcTarget
+       * Not every function has to be in the RpcTarget
+       */
+
+      private async notInRpcTarget() {
+      	return 'This is not in the RpcTarget';
+      }
+
+			/**
+       * Function that takes the name and doesn't use the Durable Object name
+       * @param name - The name to pass to the Durable Object method
+       */
+      async noName(name: string) {
+				// Call the private function that is not in the RpcTarget
+      	console.log(this.notInRpcTarget());
+
+      	return `Hello, ${name}! This doesn't use the DO name.`;
+      }
+
+  }
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		let id: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName(new URL(request.url).pathname);
 		let stub = env.MY_DURABLE_OBJECT.get(id);
 
-		// Note: no await on init() - it returns an RpcTarget immediately
-		const rpcTarget = stub.init(id.name);
-		// This is where the actual network call happens
-		const greeting = await rpcTarget.sayHello('world');
+    	/**
+    	 * Set the Durable Object metadata using the RpcTarget
+    	 * Notice that no await is needed here
+    	 */
+    	const rpcTarget = stub.setMetaData(id.name ?? 'default');
 
-		return new Response(greeting, { status: 200 });
-	},
+    	// Call the Durable Object method using the RpcTarget.
+    	// The DO name is passed in the RpcTarget
+    	const greeting = await rpcTarget.passDoName('world');
+
+    	// Call the Durable Object method that doesn't use the Durable Object name
+    	const noWow = await rpcTarget.noDoName('world');
+
+    	// Clean up the RpcTarget.
+    	try {
+    		(await rpcTarget)[Symbol.dispose]?.();
+    		console.log('RpcTarget cleaned up.');
+    	} catch (e) {
+    		console.error({
+    			message: 'RpcTarget could not be cleaned up.',
+    			error: String(e),
+    			errorPropertirs: e,
+    		});
+    	}
+
+    	return new Response(greeting, { status: 200 });
+    },
+
 } satisfies ExportedHandler<Env>;
+
 ```
+</TypeScriptExample>
+
+This example persists the Durable Object metadata. It demonstrates similar steps as the previous example, but uses Durable Object storage to store the metadata.
+
+<TypeScriptExample>
+```ts
+import { DurableObject, RpcTarget } from 'cloudflare:workers';
+
+/**
+ * Create an RpcDO class that extends RpcTarget
+ * Use this class to set the Durable Object metadata 
+ * Pass the metadata in the Durable Object methods
+ * @param mainDo - The main Durable Object class
+ * @param doName - The name of the Durable Object
+ */
+
+export class RpcDO extends RpcTarget {
+		constructor(private mainDo: MyDurableObject, private doName: string) {
+			super();
+		}
+
+    /**
+     * Pass the name to the Durable Object method
+     * @param name - The name to pass to the Durable Object method
+     */
+    async passDoName(name: string): Promise<string> {
+
+    	// Call the Durable Object method and pass the name and the Durable Object name
+    	return this.mainDo.getDoName(name, this.doName);
+    }
+
+    /**
+     * Call the Durable Object method without passing the Durable Object name
+     * @param name - The name to pass to the Durable Object method
+     */
+    async noDoName(name: string) {
+    	return this.mainDo.noName(name);
+    }
+
+}
+
+/**
+ * Create a Durable Object class 
+ * You can use the RpcDO class to set the Durable Object metadata
+ */
+
+  export class MyDurableObject extends DurableObject<Env> {
+  		constructor(ctx: DurableObjectState, env: Env) {
+  			super(ctx, env);
+  		}
+
+      /**
+       * Initialize the RpcDO class
+       * You can set the Durable Object metadata here
+       * It reutrns an instance of the RpcDO class
+       * @param doName - The name of the Durable Object
+       */
+      async setMetaData(doName: string) {
+      	// Use DO storage to store the Durable Object name
+				await this.ctx.storage.put('doName', doName);
+      	return new RpcDO(this, doName);
+      }
+
+      /**
+       * Function that takes the name and the Durable Object name
+       * @param name - The name to pass to the Durable Object method
+       * @param doName - The name of the Durable Object
+       */
+      async getDoName(name: string, doName: string): Promise<string> {
+				// If doName is not availabe from the RpcTarget class, get if from the storage
+				doName = doName ?? await this.ctx.storage.get('doName');
+      	console.log({
+      		name: name,
+      		durableObjectName: doName
+      	})
+      	return `Hello, ${name}! The name of this DO is ${doName}`;
+      }
+
+      /**
+       * Function that is not in the RpcTarget
+       * Not every function has to be in the RpcTarget
+       */
+
+      private async notInRpcTarget() {
+      	return 'This is not in the RpcTarget';
+      }
+
+			/**
+       * Function that takes the name and doesn't use the Durable Object name
+       * @param name - The name to pass to the Durable Object method
+       */
+      async noName(name: string) {
+				// Call the private function that is not in the RpcTarget
+      	console.log(this.notInRpcTarget());
+
+      	return `Hello, ${name}! This doesn't use the DO name.`;
+      }
+
+  }
+
+export default {
+	async fetch(request, env, ctx): Promise<Response> {
+		let id: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName(new URL(request.url).pathname);
+		let stub = env.MY_DURABLE_OBJECT.get(id);
+
+    	/**
+    	 * Set the Durable Object metadata using the RpcTarget
+    	 * Notice that no await is needed here
+    	 */
+    	const rpcTarget = stub.setMetaData(id.name ?? 'default');
+
+    	// Call the Durable Object method using the RpcTarget.
+    	// The DO name is passed in the RpcTarget
+    	const greeting = await rpcTarget.passDoName('world');
+
+    	// Call the Durable Object method that doesn't use the Durable Object name
+    	const noWow = await rpcTarget.noDoName('world');
+
+    	// Clean up the RpcTarget.
+    	try {
+    		(await rpcTarget)[Symbol.dispose]?.();
+    		console.log('RpcTarget cleaned up.');
+    	} catch (e) {
+    		console.error({
+    			message: 'RpcTarget could not be cleaned up.',
+    			error: String(e),
+    			errorPropertirs: e,
+    		});
+    	}
+
+    	return new Response(greeting, { status: 200 });
+    },
+
+} satisfies ExportedHandler<Env>;
+
+```
+</TypeScriptExample>
