@@ -9,7 +9,7 @@ product:
 
 meta:
   title: Privacy Proxy
-  description:
+  description: Privacy Proxy
   author: '@cloudflare'
 
 resources:
