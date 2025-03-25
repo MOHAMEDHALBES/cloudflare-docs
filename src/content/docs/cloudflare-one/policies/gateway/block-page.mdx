@@ -37,6 +37,19 @@ To turn on the block page and specify a custom block message:
 	}}
 />
 
+## Redirect to a block page
+
+You can set Gateway to perform a 307 HTTP redirect to a custom URL in lieu of a block page.
+
+To redirect users to a non-Cloudflare block page:
+
+1. In [Zero Trust](https://one.dash.cloudflare.com), go to **Settings** > **Custom Pages**.
+2. Under **Account Gateway block page**, select **Customize**.
+3. Choose **URL redirect**
+4. Select **Save**.
+
+Gateway will now redirect users to a custom page when visiting a blocked website.
+
 ## Customize the block page
 
 <Render file="gateway/customize-block-page" />
