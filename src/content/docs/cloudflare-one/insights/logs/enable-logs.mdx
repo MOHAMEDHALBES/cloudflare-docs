@@ -13,6 +13,16 @@ Before you can audit logs for Email Security, you will have to enable logpush jo
 
 ## Enable detection logs
 
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/).
+2. Select **Analytics & Logs** > **Logpush** > **Create a Logpush job**.
+3. **Select a destination**: Select **R2 Object Storage**. You must have Super Administrator access to enable access automatic setup for R2 Object Storage.
+4. **Configure logpush job**: Select **Email security alerts**.
+5. **Storage region**: Choose your storage region.
+6. Select **Create logpush job**. 
+7. Once your R2 logpush job has been created, select **Go back to Logpush Overview**, where the dashboard will display your **Dataset** and **Destination**.
+
+## Enable user action logs
+
 Once you have configured your destination, you can set up audit logs for detections:
 
 1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/).
