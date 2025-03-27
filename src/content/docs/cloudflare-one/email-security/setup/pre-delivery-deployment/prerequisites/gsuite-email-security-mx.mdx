@@ -23,7 +23,7 @@ Set up [Inbound Email Configuration](https://support.google.com/a/answer/60730?h
     - Select **Require TLS for connections from the email gateways listed above**.
     - Select **SAVE**.
 
-## 2. Set up an email quarantine
+## 2. (Optional) Set up an email quarantine
 
 [Set up an email quarantine](https://support.google.com/a/answer/6104172?hl=en#:~:text=Sign%20in%20with%20an%20administrator,t%20access%20the%20Admin%20console.&text=Manage%20quarantines.,Click%20Add%20Quarantine.) with the following details:
         - **Name**: Email Security Malicious.
@@ -34,7 +34,7 @@ Set up [Inbound Email Configuration](https://support.google.com/a/answer/60730?h
 
 To access the newly created quarantine, select **GO TO ADMIN QUARANTINE** or access the quarantine directly by pointing your browser to https://email-quarantine.google.com/adminreview.
 
-## 3. Create a content compliance filter
+## 3. (Optional) Create a content compliance filter
 
 Go to **Compliance**, and create a [content compliance filter](https://support.google.com/a/answer/1346934?hl=en#zippy=%2Cstep-go-to-gmail-compliance-settings-in-the-google-admin-console%2Cstep-enter-email-messages-to-affect) to send malicious messages to quarantine. Enter the following details:
     - **Content compliance**: Add `Quarantine Email Security Malicious`.
