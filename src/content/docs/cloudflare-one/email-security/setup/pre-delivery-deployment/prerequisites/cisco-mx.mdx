@@ -39,8 +39,8 @@ To add a new SMTP Route:
 2. Select **Add Route**.
 
 3. Configure the new SMTP Route as follows:
-   * **Receiving Domain**: `a1s.mailstream`
-   * In **Destination Hosts**, select **Add Row**, and add the Email Security MX hosts. Refer to the [Geographic locations](#5-geographic-locations) table for more information on which MX hosts to use.
+   - **Receiving Domain**: `a1s.mailstream`
+   - In **Destination Hosts**, select **Add Row**, and add the Email Security MX hosts. Refer to the [Geographic locations](#5-geographic-locations) table for more information on which MX hosts to use.
 
 ## 3. Create Incoming Content Filters
 
@@ -79,20 +79,22 @@ To create a new Content Filter:
    - **Description**: `Email Security inspected messages for final delivery`
    - **Order**: This filter must come before the previously created filter.
    - **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in [Egress IPs](/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). For example:
-     Order | Condition            | Rule
-     \----- | -------------------- | ---
-     `1`   | `Remote IP/Hostname` | `52.11.209.211`
-     `2`   | `Remote IP/Hostname` | `52.89.255.11`
-     `3`   | `Remote IP/Hostname` | `52.0.67.109`
-     `4`   | `Remote IP/Hostname` | `54.173.50.115`
-     `5`   | `Remote IP/Hostname` | `104.30.32.0/19`
-     `6`   | `Remote IP/Hostname` | `158.51.64.0/26`
-     `7`   | `Remote IP/Hostname` | `158.51.65.0/26`
-   * Ensure that the *Apply rule:* dropdown is set to **If one or more conditions match**.
-   * **Actions**: Select **Add Action**, and add the following:
-     Order | Action          | Rule
-     \--- | -------------------- | ---
-     1   | `Skip Remaining Content Filters (Final Action)` | `skip-filters()`
+
+    | Order | Condition            | Rule                 |
+    | ----- | -------------------- | -------------------- |
+    | `1`   | `Remote IP/Hostname` | `Remote IP/Hostname` |
+    | `2`   | `Remote IP/Hostname` | `52.89.255.11`       |
+    | `3`   | `Remote IP/Hostname` | `52.0.67.109`        |
+    | `4`   | `Remote IP/Hostname` | `54.173.50.115`      |
+    | `5`   | `Remote IP/Hostname` | `104.30.32.0/19`     |
+    | `6`   | `Remote IP/Hostname` | `158.51.64.0/26`     |
+    | `7`   | `Remote IP/Hostname` | `158.51.65.0/26`     |
+
+   - Ensure that the *Apply rule:* dropdown is set to **If one or more conditions match**.
+   - **Actions**: Select **Add Action**, and add the following:
+     | Order | Action                                          | Rule             |
+     | ----- | ----------------------------------------------- | ---------------- |
+     | --1   | `Skip Remaining Content Filters (Final Action)` | `skip-filters()` |
 
 ## 4. Add the Incoming Content Filter to the Inbound Policy table
 
