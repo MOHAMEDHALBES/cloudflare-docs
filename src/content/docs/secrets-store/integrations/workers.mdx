@@ -22,7 +22,7 @@ If [using the Dashboard](#via-dashboard), make sure you already have a Workers a
 
 ## 1. Set up account secrets in Secrets Store
 
-If there are no account secrets yet, follow the steps below. You must have a (TBC) [Super Administrator or a Secrets Store Admin role](/secrets-store/access-control/) within your Cloudflare account.
+If there are no account secrets yet, follow the steps below. You must have a [Super Administrator or a Secrets Store Admin role](/secrets-store/access-control/) within your Cloudflare account.
 
 :::note
 You may also add account secrets directly from the Workers settings on the dashboard. You can skip to [step 2](#via-dashboard) to do that.
@@ -40,14 +40,13 @@ Refer to [manage account secrets](/secrets-store/manage-secrets/) for further op
 
 [Bindings](/workers/runtime-apis/bindings/) allow your Worker to interact with resources on your Cloudflare account.
 
-(TBC) To bind an account secret to your Worker, you must have one of the following [roles within your Cloudflare account](/secrets-store/access-control/):
+To bind an account secret to your Worker, you must have one of the following [roles within your Cloudflare account](/secrets-store/access-control/):
 - Super Administrator
 - Secrets Store Admin
 - Secrets Store Deployer
 
 ### Via Wrangler
 
-(TBC)
 1. Add a Secrets Store binding to your [Wrangler configuration file](/workers/wrangler/configuration/):
     - `binding`: a descriptive name for your binding. This will be used in the Workers application when [accessing your secret on the `env` object](/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object).
     - `store_id`: the corresponding Secrets Store ID where your account secret was created.
@@ -80,8 +79,6 @@ secrets_store_secret = [
     - **Save version:** Save a version of the binding which you can deploy in the future.
 
 ## 3. Access the secret on the `env` object
-
-(TBC)
 
 [Bindings](/workers/runtime-apis/bindings/) are located on the `env` object, which can be accessed in several ways. Two examples are presented below. For further options, refer to the [Workers documentation](/workers/runtime-apis/bindings/#how-to-access-env).
 
