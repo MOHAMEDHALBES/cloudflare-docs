@@ -1182,6 +1182,8 @@
 /support/more-dashboard-apps/cloudflare-apps/managing-cloudflare-apps/ /workers/ 301
 /support/more-dashboard-apps/cloudflare-apps/removing-cloudflare-apps/ /workers/ 301
 /support/troubleshooting/http-status-codes/http-status-codes/ /support/troubleshooting/http-status-codes/ 301
+/support/troubleshooting/disruptive-maintenance/ /support/disruptive-maintenance/ 301
+/support/about-cloudflare/enterprise-documentation/customer-incident-management-policy/ /support/customer-incident-management-policy/ 301
 
 # r2
 /r2/platform/s3-compatibility/api/ /r2/api/s3/api/ 301
