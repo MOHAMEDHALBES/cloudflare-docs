@@ -8,7 +8,7 @@ date: 2025-04-04
 
 D1 read replication is available in public beta to help lower average latency and increase overall throughput for read-heavy applications like e-commerce websites or content management tools.
 
-Workers can leverage read-only database copies, called read replicase, by using D1 [Sessions API](/d1/best-practices/read-replication). A Session encapsulates all the queries from one logical session for your application. For example, a Session may correspond to all queries coming from a particular web browser session. With Sessions API, D1 queries in a Session are guanranteed to be sequentially consistent(/d1/best-practices/read-replication/#replica-lag-and-consistency-model) to avoid data consistency pitfalls. D1 [bookmarks](/d1/reference/time-travel/#bookmarks) can be used from a previous Session to ensure logical consistency between Sessions.
+Workers can leverage read-only database copies, called read replicase, by using D1 [Sessions API](/d1/best-practices/read-replication). A Session encapsulates all the queries from one logical session for your application. For example, a Session may correspond to all queries coming from a particular web browser session. With Sessions API, D1 queries in a Session are guanranteed to be [sequentially consistent](/d1/best-practices/read-replication/#replica-lag-and-consistency-model) to avoid data consistency pitfalls. D1 [bookmarks](/d1/reference/time-travel/#bookmarks) can be used from a previous Session to ensure logical consistency between Sessions.
 
 ```ts
 // retrieve bookmark from previous Session stored in HTTP header
@@ -22,9 +22,7 @@ const result = await session
 response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 ```
 
-Read replicas are automatically created by Cloudlfare (currently one in each supported [D1 region](/d1/best-practices/read-replication/#read-replica-locations)), are active/inactive based on query traffic, and are transparently routed to by Cloudflare at no additional cost.
-
-To checkout D1 read replication:
+Read replicas are automatically created by Cloudlfare (currently one in each supported [D1 region](/d1/best-practices/read-replication/#read-replica-locations)), are active/inactive based on query traffic, and are transparently routed to by Cloudflare at no additional cost. To checkout D1 read replication:
 
 Deploy the following Worker code using Sessions API, which will prompt you to create a D1 database and enable read replication on said database.
 
