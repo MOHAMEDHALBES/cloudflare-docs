@@ -20,7 +20,7 @@ import {
 	Details,
 } from "~/components";
 
-[D1 Read Replication](/d1/features/read-replication/) is a feature that allows you to replicate your D1 database to multiple regions. This is useful for your e-commerce website, as it reduces read latencies and improves availability. In this tutorial, you will learn how to use D1 read replication for your e-commerce website.
+[D1 Read Replication](/d1/best-practices/read-replication/) is a feature that allows you to replicate your D1 database to multiple regions. This is useful for your e-commerce website, as it reduces read latencies and improves availability. In this tutorial, you will learn how to use D1 read replication for your e-commerce website.
 
 While this tutorial uses a fictional e-commerce website, the principles can be applied to any use-case that requires high availability and low read latencies, such as a news website, a social media platform, or a marketing website.
 
@@ -34,11 +34,7 @@ This will create a repository in your GitHub account and deploy the application 
 
 After deploying to Cloudflare through the button, this tutorial requires you to enable read replication for your newly created D1 database.
 
-To enable D1 Read Replication for your database, run the following command:
-
-```sh
-curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<accountid>/d1/database/<databaseId>" -H "Authorization: Bearer $TOKEN" -H "Content-Type:application/json" --data '{ "read_replication": { "mode": "auto" } }'
-```
+To enable D1 Read Replication for your database, follow the steps in [Enable read replication](/d1/best-practices/read-replication/#enable-read-replication).
 
 ## Prerequisites
 
@@ -479,10 +475,10 @@ Add the D1 bindings returned in the terminal to the `wrangler` file:
 
 <WranglerConfig>
 ```toml
-[[d1_databases]] 
+[[d1_databases]]
 binding = "DB"
 database_name = "fast-commerce"
-database_id = "YOUR_DATABASE_ID" 
+database_id = "YOUR_DATABASE_ID"
 ```
 </WranglerConfig>
 
@@ -492,7 +488,7 @@ Run the following command to update the `Env` interface in the `worker-congifura
 npm run cf-typegen
 ```
 
-Next, enable read replication for the D1 database by running the following command. You will need to replace `<accountid>` with your Cloudflare account ID, `<databaseId>` with the ID of the D1 database, and `$TOKEN` with your Cloudflare API token. You can learn more about it in the [Read replication documentation](/d1/features/read-replication/#enable-read-replication).
+Next, enable read replication for the D1 database by running the following command. You will need to replace `<accountid>` with your Cloudflare account ID, `<databaseId>` with the ID of the D1 database, and `$TOKEN` with your Cloudflare API token. You can learn more about it in the [Read replication documentation](/d1/best-practices/read-replication/#enable-read-replication).
 
 :::note
 Read replication is only used when the application has been [deployed](/d1/tutorials/using-read-replication-for-e-com/#step-8-deploy-the-application). D1 does not create read replicas when you develop locally. To test it locally, you can start the development server with the `--remote` flag.
@@ -572,7 +568,7 @@ Update the API routes to connect to the D1 database.
 
 ### 1. POST /api/product
 
-```ts 
+```ts
 app.post('/api/product', async (c) => {
 	const product = await c.req.json();
 
@@ -645,7 +641,7 @@ In the above code:
 - You then set the bookmark in the cookie.
 - Finally, you return the response.
 
-Since you are writing the data to the database, you use the `first-primary` constraint. Even if you use the `first-unconstrained` constraint or pass a bookmark, the write request will always be routed to the primary database.
+Since you want to start the session with the latest data, you use the `first-primary` constraint. Even if you use the `first-unconstrained` constraint or pass a bookmark, the write request will always be routed to the primary database.
 
 The bookmark set in the cookie can be used to get the data from the database for a new session from that instance.
 
