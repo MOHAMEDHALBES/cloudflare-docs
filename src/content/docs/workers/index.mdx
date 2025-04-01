@@ -9,33 +9,45 @@ head:
     content: Overview
 ---
 
-import {
-	Description,
-	RelatedProduct,
-	LinkButton,
-} from "~/components";
+import { Description, RelatedProduct, LinkButton } from "~/components";
 
 <Description>
-Cloudflare Workers lets you build fast, scalable, serverless, full-stack apps on Cloudflare’s global edge network for low-latency performance.
+	Build, deploy, and scale apps on Cloudflare’s global network
 </Description>
 
-* Supports JavaScript, TypeScript, Python, Rust, & full-stack [frameworks](/workers/frameworks/)
-* Built-in [CDN caching](/cache/), distributed storage, & serverless AI inference for high performance
-* Scales easily without managing infrastructure, with simple deployment & configuration
-* Works with stateful or stateless apps and connects to [data stores](/workers/databases/connecting-to-databases/) with [smart placement](/workers/configuration/smart-placement/)
-* Runs [cron jobs](/workers/configuration/cron-triggers/), automates [workflows](/workflows/), & processes [queues](/queues/)
-* Flexible [pricing](/workers/platform/pricing/) that stays affordable at any scale
+- Simple deployment with streamlined configuration
+- Low latency, fast startup, and high performance
+- Unlimited scalability to support applications of any size
+- Multi-language compatibility, including JavaScript, TypeScript, Python, and Rust
+- Flexible [pricing](/workers/platform/pricing/) that stays affordable at any scale
 
-
-<LinkButton variant="primary">
-	Deploy with Workers
-</LinkButton>
+## <LinkButton variant="primary">Deploy with Workers</LinkButton>
 
 ---
 
-# Explore the possibilities
+## Build with Workers
 
-Integrations via [Bindings](/workers/runtime-apis/bindings/) let you connect to external services like databases, APIs, and storage, enabling functionality with a few lines of code:
+#### Front-end applications
+
+Front-end Applications with support for the most popular full stack frameworks - uses Cloudflare's CDN & cache and results in incredibly fast rendering anywhere in the globe
+
+#### Back-end applications
+
+Back-end Applications that connect to data stores and are smart placed to optimize latency
+
+#### Serverless AI inference
+
+Using some of the worlds most popular models - LLMs, image gen, etc
+
+#### Background jobs
+
+Using cron Tasks, Workflows, or Queues
+
+---
+
+## Integrate with Workers
+
+Integrations via [Bindings](/workers/runtime-apis/bindings/) let you connect to external services like databases, APIs, and storage, enabling functionality with just a few lines of code:
 
 **Storage**
 
@@ -57,17 +69,29 @@ Low-latency key-value storage for fast, edge-cached reads.
 
 </RelatedProduct>
 
+<RelatedProduct header="Queues" href="/queues/" product="queues">
+
+Lorem Ipsum dolor sit amet, consectetur adipiscing elit.
+
+</RelatedProduct>
+
 **Compute**
+
+<RelatedProduct header="Workers AI" href="/workers-ai/" product="workers-ai">
+
+Lorem Ipsum dolor sit amet, consectetur adipiscing elit.
+
+</RelatedProduct>
+
+<RelatedProduct header="Workflows" href="/workflows/" product="workflows">
+
+Lorem Ipsum dolor sit amet, consectetur adipiscing elit.
+
+</RelatedProduct>
 
 <RelatedProduct header="Vectorize" href="/vectorize/" product="vectorize">
 
 Vector database for AI-powered semantic search.
-
-</RelatedProduct>
-
-<RelatedProduct header="Zaraz" href="/zaraz/" product="zaraz">
-
-Privacy-friendly third-party script loading at the edge.
 
 </RelatedProduct>
 
