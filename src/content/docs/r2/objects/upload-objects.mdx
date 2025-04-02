@@ -11,24 +11,7 @@ You can upload objects to your bucket from the Cloudflare dashboard or using the
 
 ## Upload objects via Rclone
 
-Rclone is a command-line tool which manages files on cloud storage. You can use Rclone to upload objects to R2. To use Rclone, install it onto your machine:
-
-<Tabs>
-<TabItem label="macOS">
-To install on a Mac device, install with `brew`.
-```sh
-brew install rclone
-```
-</TabItem><TabItem label="Windows">
-To install on a Windows device, download it from the official [Rclone website](https://rclone.org/downloads/).
-</TabItem>
-</Tabs>
-
-:::note
-Use Rclone if you wish to upload multiple objects to R2.
-
-Cloudflare dashboard only allows you to upload one object at a time.
-:::
+Rclone is a command-line tool which manages files on cloud storage. You can use Rclone to upload objects to R2. To use Rclone, install it onto your machine using their official documentation - [Install Rclone](https://rclone.org/install/).
 
 ### 1. Configure Rclone by running `rclone config`
 
@@ -68,6 +51,8 @@ Verify that your files have been uploaded by listing the objects stored in the d
 rclone ls r2:bucket_name
 ```
 
+Refer to our [Rclone example](/r2/examples/rclone/).
+
 ## Upload objects via the Cloudflare dashboard
 
 To upload objects to your bucket from the Cloudflare dashboard:
@@ -101,3 +86,9 @@ Upload complete.
 ```
 
 You can set the `Content-Type` (MIME type), `Content-Disposition`, `Cache-Control` and other HTTP header metadata through optional flags.
+
+:::note
+Use Rclone if you wish to upload multiple objects to R2.
+
+Wrangler's `object put` command only allows you to upload one object at a time.
+:::
