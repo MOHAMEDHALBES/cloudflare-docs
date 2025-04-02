@@ -13,45 +13,22 @@ You can upload objects to your bucket from the Cloudflare dashboard or using the
 
 Rclone is a command-line tool which manages files on cloud storage. You can use Rclone to upload objects to R2. To use Rclone, install it onto your machine using their official documentation - [Install Rclone](https://rclone.org/install/).
 
-### 1. Configure Rclone by running `rclone config`
-
-First, configure your Rclone with the following settings.
-
-<Steps>
-1. Create new remote by selecting `n`.
-2. Select a name for the new remote. For example, use `r2`.
-3. Select the `Amazon S3 Compliant Storage Providers` storage type.
-4. Select `Cloudflare R2 storage` for the provider.
-5. Select whether you would like to enter AWS credentials manually, or get it from the runtime environment.
-6. Enter the AWS Access Key ID.
-7. Enter AWS Secret Access Key (password).
-8. Select the region to connect to (optional).
-9. Select the S3 API endpoint.
-</Steps>
-
-### 2. Upload files to R2
-
-Upload your files to R2.
+Upload your files to R2 using the `rclone copy` command.
 
 ```sh
-# Upload a single file.
-# Specify the target bucket with this syntax: <remote name>:<bucket name>
-# In this example, <remote name> is 'r2'
 rclone copy /path/to/local/file.txt r2:bucket_name
 
 # Upload everything in a directory
 rclone copy /path/to/local/folder r2:bucket_name
 ```
 
-### 3. Verify successful upload
-
-Verify that your files have been uploaded by listing the objects stored in the destination R2 bucket.
+Verify that your files have been uploaded by listing the objects stored in the destination R2 bucket using `rclone ls` command.
 
 ```sh
 rclone ls r2:bucket_name
 ```
 
-Refer to our [Rclone example](/r2/examples/rclone/).
+For more information, refer to our [Rclone example](/r2/examples/rclone/).
 
 ## Upload objects via the Cloudflare dashboard
 
