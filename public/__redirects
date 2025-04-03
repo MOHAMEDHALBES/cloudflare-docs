@@ -1192,7 +1192,9 @@
 /support/account-management-billing/billing-cloudflare-plans/ /support/account-management-billing/ 301
 /support/account-management-billing/billing-cloudflare-plans/understanding-cloudflare-sales-tax/ /support/account-management-billing/understanding-cloudflare-sales-tax/ 301
 /support/account-management-billing/billing-cloudflare-plans/cloudflare-billing-policy/ /support/account-management-billing/cloudflare-billing-policy/ 301
+/support/partners/ /support/ 301
 /support/partners/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/ /support/third-party-software/others/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/ 301
+/support/more-dashboard-apps/cloudflare-stream/ /support/more-dashboard-apps/ 301
 
 # r2
 /r2/platform/s3-compatibility/api/ /r2/api/s3/api/ 301
