@@ -1182,12 +1182,14 @@
 /support/more-dashboard-apps/cloudflare-apps/managing-cloudflare-apps/ /workers/ 301
 /support/more-dashboard-apps/cloudflare-apps/removing-cloudflare-apps/ /workers/ 301
 /support/troubleshooting/http-status-codes/http-status-codes/ /support/troubleshooting/http-status-codes/ 301
+/support/troubleshooting/cloudflare-errors/troubleshooting-other-errors/ /speed/optimization/protocol/http2/#err_http2_protocol_error 301
 /support/troubleshooting/disruptive-maintenance/ /support/disruptive-maintenance/ 301
 /support/about-cloudflare/enterprise-documentation/customer-incident-management-policy/ /support/customer-incident-management-policy/ 301
 /support/about-cloudflare/cloudflare-status/ /support/cloudflare-status/ 301
 /support/account-management-billing/billing-cloudflare-plans/understanding-cloudflare-sales-tax/ /support/account-management-billing/understanding-cloudflare-sales-tax/ 301
 /support/account-management-billing/billing-cloudflare-plans/cloudflare-billing-policy/ /support/account-management-billing/cloudflare-billing-policy/ 301
 /support/partners/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/ /support/third-party-software/others/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/ 301
+
 
 # r2
 /r2/platform/s3-compatibility/api/ /r2/api/s3/api/ 301
