@@ -205,7 +205,7 @@ export default {
 			if (!data.requests || !Array.isArray(data.requests)) {
 				return new Response(
 					JSON.stringify({
-						error: "Missing or invalid 'prompts' array in request payload.",
+						error: "Missing or invalid 'requests' array in request payload.",
 					}),
 					{ status: 400, headers: { "Content-Type": "application/json" } },
 				);
