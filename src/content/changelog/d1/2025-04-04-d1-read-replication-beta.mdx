@@ -3,7 +3,9 @@ title: D1 Read Replication Public Beta
 description: Use D1 Sessions API to leverage read replication.
 products:
   - d1
-date: 2025-04-04
+  - workers
+date: 2025-04-10T06:00:00Z
+hidden: true
 ---
 
 D1 read replication is available in public beta to help lower average latency and increase overall throughput for read-heavy applications like e-commerce websites or content management tools.
@@ -24,7 +26,7 @@ response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 
 Read replicas are automatically created by Cloudflare (currently one in each supported [D1 region](/d1/best-practices/read-replication/#read-replica-locations)), are active/inactive based on query traffic, and are transparently routed to by Cloudflare at no additional cost. To checkout D1 read replication:
 
-Deploy the following Worker code using Sessions API, which will prompt you to create a D1 database and enable read replication on said database.
+To checkout D1 read replication, deploy the following Worker code using Sessions API, which will prompt you to create a D1 database and enable read replication on said database.
 
    [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/staging/d1-starter-sessions-api)
 

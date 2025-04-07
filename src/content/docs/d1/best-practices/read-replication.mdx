@@ -12,9 +12,7 @@ D1 read replication can lower latency for read queries and scale read throughput
 
 Your application can use read replicas with D1 [Sessions API](/d1/worker-api/d1-database/#withsession). A session encapsulates all the queries from one logical session for your application. For example, a session may correspond to all queries coming from a particular web browser session. All queries within a session read from a database instance which is as up-to-date as your query needs it to be. Sessions API ensures [sequential consistency](/d1/best-practices/read-replication/#replica-lag-and-consistency-model) for all queries in a session.
 
-To checkout D1 read replication:
-
-Deploy the following Worker code using Sessions API, which will prompt you to create a D1 database and enable read replication on said database.
+To checkout D1 read replication, deploy the following Worker code using Sessions API, which will prompt you to create a D1 database and enable read replication on said database.
 
    [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/staging/d1-starter-sessions-api)
 
@@ -65,7 +63,7 @@ D1 read replication achieves this by attaching a <GlossaryTooltip term="bookmark
 
 ### Enable read replication
 
-Read replication can be enabled at the database level in the Cloudflare dashboard. Check **\<D1 Database\>** > **Settings** to view if read replication is enabled.
+Read replication can be enabled at the database level in the Cloudflare dashboard. Check **Settings** for your D1 database to view if read replication is enabled.
 
 1. Go to [**Workers & Pages** > **D1**](https://dash.cloudflare.com/?to=/:account/workers/d1).
 2. Select an existing database > **Settings** > **Enable Read Replication**.
@@ -411,7 +409,6 @@ To see the impact of read replication and check the how D1 requests are processe
 There are some known limitations for D1 read replication.
 
 - Sessions API is only available via the [D1 Worker Binding](/d1/worker-api/d1-database/#withsession) and not yet available via the REST API.
-- TODO: smart placement
 
 ## Background information
 
