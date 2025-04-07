@@ -202,7 +202,7 @@ export default {
 			const data = await request.json();
 
 			// Validate that we have a 'prompts' array in the payload
-			if (!data.prompts || !Array.isArray(data.prompts)) {
+			if (!data.requests || !Array.isArray(data.requests)) {
 				return new Response(
 					JSON.stringify({
 						error: "Missing or invalid 'prompts' array in request payload.",
