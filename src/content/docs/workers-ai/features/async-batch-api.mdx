@@ -91,7 +91,7 @@ const resp = env.AI.run("@cf/meta/llama-3.3-70b-instruct-batch", {
 			max_tokens: 102,
 		},
 	],
-});
+}, { queueRequest: true });
 ```
 
 #### Expected Response
