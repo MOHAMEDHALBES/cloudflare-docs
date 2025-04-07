@@ -216,7 +216,7 @@ export default {
 			const batchResponse = await env.AI.run(
 				"@cf/meta/llama-3.3-70b-instruct-batch",
 				{
-					prompts: data.prompts,
+					requests: data.requests,
 				}, { queueRequest: true }
 			);
 
