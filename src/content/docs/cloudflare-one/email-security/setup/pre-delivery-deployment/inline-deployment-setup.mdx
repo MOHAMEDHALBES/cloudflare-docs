@@ -18,8 +18,8 @@ If you have verified zones on Cloudflare, continue with the following steps:
 1. **Connect a domain**: Select your domain. Then, select **Continue**.
 2. **Select position**: This step allows you to choose where Email Security fits into your mail flow and configure position settings:
     - **Select position**: Choose between:
-        - **Sit first (hop count = 1)**: Email Security sits at the first hop. There are no other email scanners or services between the Internet and Cloudflare.
-        - **Sit in the middle (hop count > 1)**: Email Security sits in the middle of your email processing. There are other email scanners or email services in between.
+        - **Sit first (hop count = 1)**: Email Security is the first server that receives the email. There are no other email scanners or services between the Internet and Cloudflare.
+        - **Sit in the middle (hop count > 1)**: Email Security sits anywhere other than the first position. Other servers receive emails _before_ Email Security. There are other email scanners or email services in between.
     - **Position settings**: Refine how Email Security receives and forwards emails:
         - **Forwarding address**: This is your mail flow next hop after Email Security. This value is auto-filled, but you can still change it.
         - **Outbound TLS**: Choose between:
@@ -29,7 +29,7 @@ If you have verified zones on Cloudflare, continue with the following steps:
 3. (**Optional**, select **Skip for now** to skip this step) **Configure quarantine policy**: Select dispositions to automatically prevent certain types of incoming messages from reaching a recipient's inbox. 
 4. (Optional) **Update MX records**: 
     - Email Security can automatically update MX records for domains that proxy traffic through Cloudflare. Under **Your mail processing location**, select your mail processing location.
-    - You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**.
+    - You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**. When Email Security updates MX records, we replace your original MX records with Email Security MX records.
     - Select **Continue**.
 5. **Review details**: Review your domain, then select **Go to domains**.
 
