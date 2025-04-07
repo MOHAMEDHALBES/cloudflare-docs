@@ -186,7 +186,7 @@ Below is a sample TypeScript Worker that receives a batch of inference requests,
 ```ts
 export interface Env {
 	AI: {
-		run: (model: string, payload: any) => Promise<any>;
+		run: (model: string, payload: any, options: any) => Promise<any>;
 	};
 }
 
