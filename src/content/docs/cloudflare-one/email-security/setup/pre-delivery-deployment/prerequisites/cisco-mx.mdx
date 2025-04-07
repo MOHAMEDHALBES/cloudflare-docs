@@ -28,7 +28,7 @@ To add a new Sender Group:
    - **DNS Lists**: Leave blank.
    - **Connecting Host DNS Verification**: Leave all options unchecked.
 
-4. Select **Submit and Add Senders**, and add the IP addresses mentioned in [Egress IPs](/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). If you need to process emails in the EU or India regions for compliance purposes, add those IP addresses as well.
+4. Select **Submit and Add Senders**, and add the IP addresses mentioned in <a href="/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/" target="_blank">Egress IPs</a>. If you need to process emails in the EU or India regions for compliance purposes, add those IP addresses as well.
 
 ## 2. Add <GlossaryTooltip term="SMTP">SMTP</GlossaryTooltip> route for the Email Security Email Protection Hosts
 
@@ -78,7 +78,7 @@ To create a new Content Filter:
    - **Name**: `A1S_to_ESA`
    - **Description**: `Email Security inspected messages for final delivery`
    - **Order**: This filter must come before the previously created filter.
-   - **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in [Egress IPs](/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/). For example:
+   - **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in <a href="/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/" target="_blank">Egress IPs</a>. For example:
 
     | Order | Condition            | Rule                 |
     | ----- | -------------------- | -------------------- |
