@@ -73,25 +73,29 @@ Send your initial batch inference request by composing a JSON payload containing
 
 ```javascript title=Example code
 // Input: JSON with an array of individual request JSONs
-const resp = env.AI.run("@cf/meta/llama-3.3-70b-instruct-batch", {
-	requests: [
-		{
-			prompt: "tell me a joke",
-			temperature: 0.5,
-			max_tokens: 100,
-		},
-		{
-			prompt: "write an email from user to provider.",
-			temperature: 0.6,
-			max_tokens: 101,
-		},
-		{
-			prompt: "tell me a joke about llamas",
-			temperature: 0.7,
-			max_tokens: 102,
-		},
-	],
-}, { queueRequest: true });
+const resp = env.AI.run(
+	"@cf/meta/llama-3.3-70b-instruct-batch",
+	{
+		requests: [
+			{
+				prompt: "tell me a joke",
+				temperature: 0.5,
+				max_tokens: 100,
+			},
+			{
+				prompt: "write an email from user to provider.",
+				temperature: 0.6,
+				max_tokens: 101,
+			},
+			{
+				prompt: "tell me a joke about llamas",
+				temperature: 0.7,
+				max_tokens: 102,
+			},
+		],
+	},
+	{ queueRequest: true },
+);
 ```
 
 #### Expected Response
@@ -217,7 +221,8 @@ export default {
 				"@cf/meta/llama-3.3-70b-instruct-batch",
 				{
 					requests: data.requests,
-				}, { queueRequest: true }
+				},
+				{ queueRequest: true },
 			);
 
 			// Return the response from the AI API
@@ -258,3 +263,12 @@ npm run deploy
 ```
 
 By following this guide, you can create a Worker that leverages the async batch API to efficiently handle large workloads and improve the performance of both batch and real-time applications.
+
+## Supported Models
+
+- [@cf/meta/llama-3.3-70b-instruct-fp8-fast](/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/)
+- [@cf/baai/bge-small-en-v1.5](/workers-ai/models/bge-small-en-v1.5/)
+- [@cf/baai/bge-base-en-v1.5](/workers-ai/models/bge-base-en-v1.5/)
+- [@cf/baai/bge-large-en-v1.5](/workers-ai/models/bge-large-en-v1.5/)
+- [@cf/baai/bge-m3](/workers-ai/models/bge-m3/)
+- [@cf/meta/m2m100-1.2b](/workers-ai/models/m2m100-1.2b/)
