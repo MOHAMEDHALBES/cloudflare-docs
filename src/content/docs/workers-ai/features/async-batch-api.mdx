@@ -7,7 +7,7 @@ sidebar:
 
 import { Render, PackageManagers, WranglerConfig } from "~/components";
 
-This guide will walk you through the concepts behind asynchronous batch processing, explain why it matters, and show you how to create and deploy a Cloudflare Worker that leverages the Batch API with the AI binding.
+This guide will walk you through the concepts behind asynchronous batch processing, explain why it matters, and show you how to create and deploy a Cloudflare Worker that leverages the Batch API with the AI binding and also working with REST API instead of a Cloudflare Worker.
 
 ## 1. What Is Asynchronous Batch?
 
@@ -253,6 +253,55 @@ export default {
 
 - **Returning the results:**
   Once processed, the AI API returns the batch responses. These responses include an array where each object has an `id` (matching the prompt index) and the corresponding inference result.
+
+## Using the Batch API via the REST API
+
+If you prefer to work directly with the REST API instead of a Cloudflare Worker, below are the steps on how to do it:
+
+### Sending a Batch Request
+
+Make a POST request to the following endpoint:
+
+```bash
+POST https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true
+Authorization: <token>
+Content-Type: application/json
+```
+
+#### Request Payload Example
+
+```json
+{
+	"requests": [
+		{
+			"prompt": "Tell me a story",
+			"external_reference": "reference2"
+		},
+		{
+			"prompt": "Tell me a joke",
+			"external_reference": "reference1"
+		}
+	]
+}
+```
+
+### Retrieving the Batch Response
+
+After receiving a `request_id` from your initial POST, you can poll for or retrieve the results with another POST request:
+
+```bash
+POST https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true
+Authorization: <token>
+Content-Type: application/json
+```
+
+#### Request Payload for Retrieving Results
+
+```json
+{
+	"request_id": "<uuid>"
+}
+```
 
 ## 6. Deployment
 
