@@ -17,7 +17,6 @@ The Workers platform has a variety of ways to test your applications, depending 
 
 However, if you don't use Vitest, both [Miniflare's API](/workers/testing/miniflare/writing-tests) and the [`unstable_startWorker()`](/workers/wrangler/api/#unstable_startworker) API provide options for testing your Worker in any testing framework.
 
-| Feature                                                                  | [Vitest integration](/workers/testing/vitest-integration) | [`unstable_startWorker()`](/workers/wrangler/api/#unstable_startworker) | [Miniflare's API](/workers/testing/miniflare) |
 | ------------------------------------------------------------------------ | --------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------- |
 | Unit testing                                                             | ✅                                                        | ❌                                                                      | ❌                                            |
 | Integration testing                                                      | ✅                                                        | ✅                                                                      | ✅                                            |
@@ -30,5 +29,6 @@ However, if you don't use Vitest, both [Miniflare's API](/workers/testing/minif
 | Run Durable Object alarms immediately                                    | ✅                                                        | ❌                                                                      | ❌                                            |
 | List Durable Objects                                                     | ✅                                                        | ❌                                                                      | ❌                                            |
 | Testing service Workers                                                  | ❌                                                        | ✅                                                                      | ✅                                            |
+| Feature                                                                  | [Vitest integration](/workers/testing/vitest-integration) | [`unstable_startWorker()`](/workers/testing/unstable_startworker/) | [Miniflare's API](/workers/testing/miniflare/writing-tests/) |
 
 <Render file="testing-pages-functions" product="workers" />
