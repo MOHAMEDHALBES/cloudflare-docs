@@ -23,21 +23,19 @@ To retrieve those values:
 
 2.  Go to **Applications** > **Enterprise applications**.
 
-3.  In the sidebar, go to **Manage** > **Enterprise applications**. (delete)
+3.  Select **New application**, then select **Create your own application**.
 
-4.  Select **New application**, then select **Create your own application**.
+4.  Name your application.
 
-5.  Name your application.
+5.  Select **Register an application to integrate with Microsoft Entra ID (App you're developing)**. If offered, do not select any of the gallery applications. Select **Create**.
 
-6.  Select **Register an application to integrate with Microsoft Entra ID (App you're developing)**. Do not select any of the gallery applications and, instead, select **Create**.
+7.  In [Zero Trust](https://one.dash.cloudflare.com), go to **Settings** > **Custom Pages** and find your team name.
 
-7.  Under **Redirect URI**, select the _Web_ platform and enter the following URL:
+      Under **Redirect URI**, select the _Web_ platform and enter the following URL:
 
     ```txt
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
-
-    You can find your team name in Zero Trust under **Settings** > **Custom Pages**.
 
     ![Registering an application in Azure](~/assets/images/cloudflare-one/identity/azure/name-app.png)
 
@@ -45,7 +43,7 @@ To retrieve those values:
 
 9.  Next, return to Microsoft Entra ID and go to **Applications** > **App registrations**.
 
-10. Select **All applications** and select the app you just created. Copy the **Application (client) ID** and **Directory (tenant) ID**.
+10. Select **All applications** and select the app you just created. Copy the **Application (client) ID** and **Directory (tenant) ID**. You will need these values when [adding Entra ID as an identity provider in step 3](/cloudflare-one/identity/idp-integration/entra-id/#3-add-entra-id-as-an-identity-provider).
 
     ![Viewing the Application ID and Directory ID in Azure](~/assets/images/cloudflare-one/identity/azure/azure-values.png)
 
@@ -57,7 +55,7 @@ To retrieve those values:
     When the client secret expires, users will be unable to log in through Access. Take note of your expiry date to prevent login errors and renew your client secret when necessary.
     :::
 
-13. After the client secret is created, copy its **Value** field. Store the client secret in a safe place, as it can only be viewed immediately after creation. You will need this value when [adding Entra ID as an identity provider](step 3).
+13. After the client secret is created, copy its **Value** field. Store the client secret in a safe place, as it can only be viewed immediately after creation. You will need this client secret value when [adding Entra ID as an identity provider in step 3](/cloudflare-one/identity/idp-integration/entra-id/#3-add-entra-id-as-an-identity-provider).
 
     ![Location of client secret in Azure](~/assets/images/cloudflare-one/identity/azure/client-cert-value.png)
 
@@ -101,9 +99,11 @@ More narrow permissions may be used, however this is the set of permissions that
 
 4. Enter the **Application (client) ID**, **Client secret**, and **Directory (tenant) ID** obtained from Microsoft Entra ID.
 
-5. (test or save)
+5. To [test](/cloudflare-one/identity/idp-integration/#test-idps-in-zero-trust) that your connection is working, select **Test**.
 
-6. (Optional) Configure the following settings:
+6. Select **Save**.
+
+7. (Optional) Configure the following settings:
 
    - **Proof Key for Code Exchange**: Perform [PKCE](https://www.oauth.com/oauth2-servers/pkce/) on all login attempts.
    - **Support Groups**: Allow Cloudflare to read a user's Entra ID group membership.
@@ -111,10 +111,6 @@ More narrow permissions may be used, however this is the set of permissions that
    - **Enable SCIM**: Refer to [Synchronize users and groups](#synchronize-users-and-groups).
    - **Email claim**: Enter the Entra ID claim that you wish to use for user identification (for example, `preferred_username`).
    - **OIDC Claims**: Enter [custom OIDC claims](/cloudflare-one/identity/idp-integration/generic-oidc/#oidc-claims) that you wish to add to your users' identity. This information will be available in the [user identity endpoint](/cloudflare-one/identity/authorization-cookie/application-token/#user-identity).
-
-6. Select **Save**.
-
-To [test](/cloudflare-one/identity/idp-integration/#test-idps-in-zero-trust) that your connection is working, select **Test**.
 
 </TabItem> <TabItem label="API">
 
@@ -202,33 +198,31 @@ SCIM requires a separate enterprise application from the one created during [ini
 
 3. Name your application (for example, `Cloudflare Access SCIM`).
 
-4. Select **Integrate any other application you don't find in the gallery (Non-gallery)**. Do not select any of the gallery applications.
+4. Select **Integrate any other application you don't find in the gallery (Non-gallery)**. If offered, do not select any of the gallery applications.
 
-6. Select **New configuration**.
+(check this part with Tim)
 
-In the dash, you must toggle on **Enable SCIM**. Enable user deprovisioning and Remove user seat on deprovision is optional. SCIM identity update behavior is optional.
+5. Select **New configuration**.
 
-In Zero Trust, after you have enabled SCIM, select **Regenerate Secret** which will give you SCIM Endpoint and the SCIM secret.
+6. In the **Tenant URL** field, enter the **SCIM Endpoint** obtained from your Entra ID integration in Zero Trust [in the previous step](/cloudflare-one/identity/idp-integration/entra-id/#1-enable-scim-in-zero-trust).
 
-8. In the **Tenant URL** field, enter the **SCIM Endpoint** obtained from Zero Trust.
+7. In the **Secret token** field, enter the **SCIM Secret** obtained from your Entra ID integration in Zero Trust [in the previous step](/cloudflare-one/identity/idp-integration/entra-id/#1-enable-scim-in-zero-trust).
 
-9. In the **Secret token** field, enter the **SCIM Secret** obtained from Zero Trust.
+8. Select **Test Connection** to ensure that the credentials were entered correctly.
 
-10. Select **Test Connection** to ensure that the credentials were entered correctly.
+9. Select **Create**.
 
-11. Select **Create**.
-
-5. Once the SCIM application is created, [assign users and groups to the application](https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal).
+10. Once the SCIM application is created, [assign users and groups to the application](https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal).
 
    :::note
    Groups in this SCIM application should match the groups in your other [Cloudflare Access enterprise application](/cloudflare-one/identity/idp-integration/entra-id/#set-up-entra-id-as-an-identity-provider). Because SCIM group membership updates will overwrite any groups in a user's identity, assigning the same groups to each app ensures consistent policy evaluation.
    :::
 
-new. Go to **Provisioning** and select **Start provisioning**.
+11. Go to **Provisioning** and select **Start provisioning**.
 
-7. For **Provisioning Mode**, default mode is _Automatic_.
+12. For **Provisioning Mode**, the default mode should be set by Microsoft to _Automatic_.
 
-12. On the **Overview** page, you will see the synchronization status in Entra ID.
+13. On the **Overview** page in Entra ID, you will see the synchronization status.
 
 To check which users and groups were synchronized, select **View provisioning logs**.
 
@@ -238,7 +232,7 @@ To check which users and groups were synchronized, select **View provisioning lo
 
 Provisioning attributes define the user properties that Entra ID will synchronize with Cloudflare Access. To modify your provisioning attributes, go to the **Attribute mapping** and select **Provision Microsoft Entra ID Users**.
 
-If not already configured, we recommend enabling the following user attribute mappings:
+If not already configured, Cloudflare recommends enabling the following user attribute mappings:
 
 | customappsso Attribute         | Entra ID Attribute | Recommendation |
 | ------------------------------ | ------------------ | -------------- |
