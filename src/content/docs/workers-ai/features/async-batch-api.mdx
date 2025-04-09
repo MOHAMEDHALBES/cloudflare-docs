@@ -65,11 +65,17 @@ binding = "AI"
 
 Your binding is [available in your Worker code](/workers/reference/migrate-to-module-workers/#bindings-in-es-modules-format) on [`env.AI`](/workers/runtime-apis/handlers/fetch/).
 
-## 4. How to use the Batch API
+## 5. How to use the Batch API
 
 ### 1. Sending a Batch request
 
-Send your initial batch inference request by composing a JSON payload containing an array of individual inference requests. Ensure that the total payload is under 25 MB.
+Send your initial batch inference request by composing a JSON payload containing an array of individual inference requests.
+
+:::note[Note]
+
+Ensure that the total payload is under 25 MB.
+
+:::
 
 ```javascript title=Example code
 // Input: JSON with an array of individual request JSONs
@@ -183,7 +189,7 @@ When the inference is complete, the API returns a final HTTP status code of `200
   - **`success`**: A Boolean flag indicating if the request was processed successfully.
 - **`usage`**: Contains token usage details for the batch request.
 
-## 5. Implementing the Batch API in your Worker
+## 6. Implementing the Batch API in your Worker
 
 Below is a sample TypeScript Worker that receives a batch of inference requests, sends them to a batch-enabled AI model, and returns the results.
 
@@ -263,9 +269,10 @@ If you prefer to work directly with the REST API instead of a Cloudflare Worker,
 Make a POST request to the following endpoint:
 
 ```bash
-POST https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true
-Authorization: <token>
-Content-Type: application/json
+curl --request POST \
+--url "https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true"
+--header "Authorization: <token>"
+--header "Content-Type: application/json"
 ```
 
 #### Request Payload Example
@@ -303,7 +310,7 @@ Content-Type: application/json
 }
 ```
 
-## 6. Deployment
+## 7. Deployment
 
 After completing your changes, deploy your Worker with the following command:
 
