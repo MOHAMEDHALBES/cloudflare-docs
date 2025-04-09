@@ -7,15 +7,15 @@ sidebar:
 
 import { Render, Tabs, TabItem } from "~/components";
 
-When Gateway blocks a traffic with a [DNS](/cloudflare-one/policies/gateway/dns-policies/#block) or [HTTP Block policy](/cloudflare-one/policies/gateway/http-policies/#block), Gateway can display a block page in your users' browsers. You can configure the block page to provide a descriptive reason for blocking traffic or to redirect to an internal page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
+When Gateway blocks traffic with a [DNS](/cloudflare-one/policies/gateway/dns-policies/#block) or [HTTP Block policy](/cloudflare-one/policies/gateway/http-policies/#block), you can configure a block page to display in your users' browsers. You can configure the Cloudflare-hosted block page can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
 
 ## Prerequisites
 
-In order to display the block page as the URL of the blocked domain, your devices must have a [Cloudflare certificate](/cloudflare-one/connections/connect-devices/user-side-certificates/manual-deployment/) installed. Enterprise users can also [deploy their own root CA certificate](/cloudflare-one/connections/connect-devices/user-side-certificates/custom-certificate/). If you do not install a certificate, the block page [will not display correctly](#certificate-error).
+In order to display the block page as the URL of the blocked domain, your organization's devices must have a [Cloudflare certificate](/cloudflare-one/connections/connect-devices/user-side-certificates/manual-deployment/) installed. Enterprise users can also [deploy their own root CA certificate](/cloudflare-one/connections/connect-devices/user-side-certificates/custom-certificate/). If you do not install a certificate, the block page [will not display correctly](#certificate-error).
 
 ## Configure the block page
 
-Gateway can display a global block page in the browser of any user whose traffic is blocked. By default, Gateway will display the block page for any DNS Block policies you turn it on for and all HTTP Block policies. You can [turn on or override the global setting](#configure-policy-block-behavior) on a per-policy basis.
+Gateway will display a global block page in the browser of any user whose traffic is blocked. By default, Gateway will display the block page for any DNS Block policies you turn it on for and all HTTP Block policies. You can [turn on or override the global setting](#configure-policy-block-behavior) on a per-policy basis.
 
 To configure the global block page:
 
