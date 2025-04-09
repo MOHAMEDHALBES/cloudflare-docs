@@ -95,13 +95,15 @@ API value: `redirect`
 
 The Redirect action allows you to redirect matched HTTP requests to a different URL you specify. For example, if your users browse to the public web page of a SaaS app, you can redirect them to your own self-hosted instance, a single sign-on page, or an internal policy page.
 
+To redirect URLs with a Block action and the block page, refer to [Redirect to a block page](/cloudflare-one/policies/gateway/block-page/#redirect-to-a-block-page).
+
 #### Policy settings
 
 In **Policy URL redirect**, you can define what URL to redirect matched requests to. The redirect URL can contain paths and queries. For example, you can redirect `example.com` to `cloudflare.com/path/to/page?querystring=x`.
 
 <Render file="gateway/policy-context" />
 
-When you turn on **Preserve original path and query string**, Gateway will append the original path and query string to the redirected URL. Paths and queries in the redirect URL take precedence. For example, if the original URL is `example.com/path/to/page?querystring=X` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
+When you turn on **Preserve original path and query string**, Gateway will append the original path and query string to the redirected URL. Paths and queries in the redirect URL take precedence over the original URL. For example, if the original URL is `example.com/path/to/page?querystring=X` and the redirect URL is `cloudflare.com/redirect-path?querystring=Y`, Gateway will redirect requests to:
 
 ```txt "cloudflare.com/redirect-path" "?querystring=Y"
 cloudflare.com/redirect-path/path/to/page?querystring=Y
