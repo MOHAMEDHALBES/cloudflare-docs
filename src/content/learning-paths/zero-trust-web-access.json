@@ -1,5 +1,5 @@
 {
-	"title": "Deploy Clientless Access",
+	"title": "Deploy clientless access",
 	"path": "/learning-paths/zero-trust-web-access/concepts/",
 	"priority": 2,
 	"description": "Secure access to internal web applications without a device client.",
