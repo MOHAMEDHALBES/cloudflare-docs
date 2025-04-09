@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-import { Render, PackageManagers, WranglerConfig } from "~/components";
+import { Render, PackageManagers, WranglerConfig, CURL } from "~/components";
 
 This guide will walk you through the concepts behind asynchronous batch processing, explain why it matters, and show you how to create and deploy a Cloudflare Worker that leverages the Batch API with the AI binding and also working with REST API instead of a Cloudflare Worker.
 
@@ -73,7 +73,7 @@ Send your initial batch inference request by composing a JSON payload containing
 
 :::note[Note]
 
-Ensure that the total payload is under 25 MB.
+Ensure that the total payload is under 10 MB.
 
 :::
 
@@ -268,12 +268,15 @@ If you prefer to work directly with the REST API instead of a Cloudflare Worker,
 
 Make a POST request to the following endpoint:
 
-```bash
-curl --request POST \
---url "https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true"
---header "Authorization: <token>"
---header "Content-Type: application/json"
-```
+<CURL
+	url="https://api.cloudflare.com/client/v4/accounts/<account-id>/ai/run/@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast?queueRequest=true"
+	method="POST"
+	headers={{
+		Authorization: "<token>",
+		"Content-Type": "application/json",
+	}}
+	code={{ mark: "value" }}
+/>
 
 #### Request Payload Example
 
