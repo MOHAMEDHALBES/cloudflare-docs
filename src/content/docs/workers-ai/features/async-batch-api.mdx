@@ -74,7 +74,7 @@ Send your initial batch inference request by composing a JSON payload containing
 ```javascript title=Example code
 // Input: JSON with an array of individual request JSONs
 const resp = env.AI.run(
-	"@cf/meta/llama-3.3-70b-instruct-batch",
+	"@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast",
 	{
 		requests: [
 			{
