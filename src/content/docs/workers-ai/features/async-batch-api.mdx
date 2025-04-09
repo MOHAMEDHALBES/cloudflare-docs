@@ -218,7 +218,7 @@ export default {
 			// Send the batch request to the AI model via the AI binding
 			// Replace "@cf/meta/llama-3.3-70b-instruct-batch" with your desired batch-enabled model if needed.
 			const batchResponse = await env.AI.run(
-				"@cf/meta/llama-3.3-70b-instruct-batch",
+				"@cf/meta/ray-llama-3.3-70b-instruct-fp8-fast",
 				{
 					requests: data.requests,
 				},
