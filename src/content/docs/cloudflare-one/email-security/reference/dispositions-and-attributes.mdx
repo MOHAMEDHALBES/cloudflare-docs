@@ -36,11 +36,11 @@ Traffic that flows through Email Security can also receive one or more Attribute
 | `NEW_DOMAIN_LINK=<REGISTRATION_DATE>`   | Alerts to mail with links pointing out to a newly registered domain. Formatted as yyyy-MM-dd HH:mm:ss ZZZ.                                                                                                                          |
 | `ENCRYPTED`                             | Email message is encrypted.                                                                                                                                                                                                         |
 | `EXECUTABLE`                            | Email message contains an executable file.                                                                                                                                                                                          |
-| `BEC`                                   | Indicates that email address was contained in your [impersonation registry](/email-security/detection-settings/impersonation-registry/) list. Associated with `MALICIOUS` or `SPOOF` dispositions. |
+| `BEC`                                   | Indicates that email address was contained in your [impersonation registry](/cloudflare-one/email-security/detection-settings/impersonation-registry/) list. Associated with `MALICIOUS` or `SPOOF` dispositions. |
 
 ### Header structure
 
-When Email Security adds a disposition header to an email message, that header matches the following format.
+When Email Security adds a disposition header to an email message, that header matches the following format:
 
 ```txt
 X-CFEmailSecurity-Attribute: [Value]
